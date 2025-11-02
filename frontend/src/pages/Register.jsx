@@ -11,7 +11,7 @@ export default function Register() {
     try {
       await register(form.email, form.password);
       alert("Registration successful! Please login.");
-      navigate("/login");
+      navigate("/");
     } catch (err) {
       alert("Registration failed. User may already exist.");
     }
@@ -52,7 +52,7 @@ export default function Register() {
 
         <p className="mt-4 text-center text-gray-600 text-sm">
           Already have an account?{" "}
-          <Link to="/login" className="text-blue-600 font-semibold hover:underline">
+          <Link to="/" className="text-blue-600 font-semibold hover:underline">
             Login
           </Link>
         </p>

@@ -3,5 +3,5 @@ import useAuth from "./hooks/useAuth";
 
 export function ProtectedRoute({ children }) {
   const isAuth = useAuth();
-  return isAuth ? children : <Navigate to="/login" replace />;
+  return isAuth ? children : <Navigate to="/" replace />;
 }
