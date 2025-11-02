@@ -22,4 +22,14 @@ async function fetchWeatherByCityName(cityName) {
   return res.data;
 }
 
-module.exports = { fetchWeatherByCityName };
+//  Fetch 5-day forecast
+async function fetchForecastByCityName(cityName) {
+  if (!KEY) throw new Error('OpenWeather API key not configured');
+  const url = `${BASE}/forecast`;
+  const params = { q: cityName, appid: KEY, units: UNITS };
+
+  const res = await axios.get(url, { params });
+  return res.data;
+}
+
+module.exports = { fetchWeatherByCityName,fetchForecastByCityName };

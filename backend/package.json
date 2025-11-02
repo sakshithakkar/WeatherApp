@@ -1,7 +1,7 @@
 {
   "name": "weatherapp",
-  "version": "1.0.1",
-  "versioncomment": "Created auth apis",
+  "version": "1.0.2",
+  "versioncomment": "Created forecast api",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

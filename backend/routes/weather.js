@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const City = require('../models/City');
-const { fetchWeatherByCityName } = require('../utils/weatherClient');
+const { fetchWeatherByCityName,fetchForecastByCityName } = require('../utils/weatherClient');
 const auth = require("../middleware/auth.js");
 
 // GET /api/weather/:city - fetch weather for specific city (by name)
@@ -44,6 +44,15 @@ router.get('/:city',auth, async (req, res) => {
       return res.json({ fromApi: false, city: stored });
     }
     res.status(500).json({ error: 'Could not fetch weather' });
+  }
+});
+
+router.get("/forecast/:city", auth, async (req, res) => {
+  try {
+      const data = await fetchForecastByCityName(req.params.city);
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching forecast" });
   }
 });
 
