@@ -24,7 +24,7 @@ export default function CityDetails() {
     return (
         <div className="min-h-screen bg-gray-100 p-6">
             <Link
-                to="/"
+                to="/dashboard"
                 className="inline-block mb-4 text-blue-700 font-semibold hover:text-blue-900 transition flex gap-2 items-center"
             >
                 ← Back to Dashboard
