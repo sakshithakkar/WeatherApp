@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const City = require('../models/City');
 const { fetchWeatherByCityName } = require('../utils/weatherClient');
+const auth = require("../middleware/auth.js");
 
 // GET /api/weather/:city - fetch weather for specific city (by name)
-router.get('/:city', async (req, res) => {
+router.get('/:city',auth, async (req, res) => {
   const cityName = req.params.city;
   try {
     // fetch fresh data from API and update DB if city exists or return fresh

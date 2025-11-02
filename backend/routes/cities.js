@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 const City = require('../models/City');
 const { fetchWeatherByCityName } = require('../utils/weatherClient');
+const auth = require("../middleware/auth.js");
+
 
 // POST /api/cities - add new city to track
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
   try {
     const { name } = req.body;
     if (!name) return res.status(400).json({ error: 'City name required' });
@@ -38,7 +40,7 @@ router.post('/', async (req, res) => {
 });
 
 // GET /api/cities - list tracked cities
-router.get('/', async (req, res) => {
+router.get('/',auth, async (req, res) => {
   try {
     const cities = await City.find().sort({ name: 1 });
     res.json(cities);
@@ -50,7 +52,7 @@ router.get('/', async (req, res) => {
 
 
 // DELETE /api/cities/:id
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
   try {
     const id = req.params.id;
     const city = await City.findByIdAndDelete(id);

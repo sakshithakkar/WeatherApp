@@ -6,6 +6,7 @@ const cron = require('node-cron');
 
 const cityRoutes = require('./routes/cities');
 const weatherRoutes = require('./routes/weather');
+const authRoutes = require('./routes/auth')
 const City = require('./models/City');
 const { fetchWeatherByCityName } = require('./utils/weatherClient');
 dotenv.config();
@@ -15,6 +16,7 @@ app.use(express.json());
 
 app.use('/api/cities', cityRoutes);
 app.use('/api/weather', weatherRoutes);
+app.use("/api/auth", authRoutes);
 
 const PORT = process.env.PORT || 5000;
 
